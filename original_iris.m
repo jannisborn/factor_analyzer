@@ -7,15 +7,13 @@ load fisheriris.mat
 X = meas;
 
 iterations = 25;
-ks = [1,2];
+k = 1;
 
-for k = ks
-    loadings = zeros(iterations,size(X,2),k);
-    phis = zeros(iterations, size(X,2));
-    for run = 1:iterations
-        [loadings(run,:,:), phis(run,:)] = ffa(X,k);
-    end
-    save(strcat('iris_result_',string(k),'.mat'), 'loadings', 'phis')
+loadings = zeros(iterations,size(X,2),k);
+phis = zeros(iterations, size(X,2));
+for run = 1:iterations
+    [loadings(run,:,:), phis(run,:)] = ffa(X,k);
 end
+save(strcat('iris_result_',string(k),'.mat'), 'loadings', 'phis')
 
 
